@@ -14,6 +14,8 @@ extern char **environ;
 #define BUFFER_SIZE 1024
 #define Max_Arguments 1000
 
+
+char *read_ptr();
 void print_tokens(char **args);
 void free_args(char **args, int arg_count);
 void swap_int(int *a, int *b);

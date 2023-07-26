@@ -6,8 +6,6 @@
 void handle_shell(void)
 {
 	char *inputptr = NULL;
-	size_t y = 0;
-	ssize_t user_input;
 	char *args[Max_Arguments];
 	int argCount;
 
@@ -17,31 +15,17 @@ void handle_shell(void)
 
 	while (1)
 	{
-		if (isatty(STDIN_FILENO))
+		inputptr = read_ptr();
+		if (inputptr == NULL)
 		{
-			write(STDOUT_FILENO, "Simple shell$ ", 14);
-		}
-		user_input = getline(&inputptr, &y, stdin);
-
-		/*printf("Input read: %s", inputptr);*/
-		if (user_input == -1)
-		{
-			if (isatty(STDIN_FILENO))
-			{
-				free(inputptr);
-			}
 			break;
-		}
-
-		if (inputptr[0] == '\n' || (strspn(inputptr, "  \t\n\r") == strlen(inputptr)))
-		{
-			continue;
 		}
 
 		remove_trailing_newline(inputptr);
 		argCount = tokenize_arguments(inputptr, args);
 
 		handle_command_execution(args);
+		free(inputptr);
 		free_args(args, argCount);
 
 		/*print_tokens(args);*/
