@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * tokenize_arguments - tokenize argument passed to prompt by the user
+ * tokenize_arguments - Tokenize argument passed to prompt by the user
  * @inputptr: pointer to the input string
  * @args: array of arguments
+ * Return: tokens
  */
 int tokenize_arguments(char *inputptr, char **args)
 {

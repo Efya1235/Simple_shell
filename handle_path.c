@@ -3,6 +3,7 @@
 /**
 *handle_command_path - finds path of command imputed for execution
 *@args: array of string or characters that make up the command
+*Return: path of the command if it exists
 */
 
 char *handle_command_path(char *args)

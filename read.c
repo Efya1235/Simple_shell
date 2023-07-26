@@ -1,5 +1,8 @@
 #include "shell.h"
-
+/**
+  * read_ptr - Reads user input
+  * Return: characters read
+  */
 
 char *read_ptr()
 {
@@ -16,10 +19,10 @@ char *read_ptr()
 
 	if (user_input == -1)
 	{
-			free(inputptr);
-			return (NULL);
+		free(inputptr);
+		return (NULL);
 	}
-	
+
 	if (inputptr[0] == '\n' || (strspn(inputptr, "  \t\n\r") == strlen(inputptr)))
 	{
 		free(inputptr);
@@ -27,5 +30,4 @@ char *read_ptr()
 	}
 
 	return (inputptr);
-
 }
