@@ -58,7 +58,6 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 		fprintf(stderr, "Memory allocation error\n");
 		return (NULL);
 	}
-
 	for (i = 0; n > 1; i++)
 	{
 		result[i] = src[i];
