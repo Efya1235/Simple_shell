@@ -21,7 +21,7 @@ void free_args(char **args, int arg_count);
 void swap_int(int *a, int *b);
 void bubble_sort(int *array, size_t size);
 void remove_trailing_newline(char *inputptr);
-void handle_command_path(char **args);
+char *handle_command_path(char *args);
 void handle_command_execution(char **args);
 void handle_shell(void);
 ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream);

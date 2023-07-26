@@ -21,7 +21,7 @@ void handle_command_execution(char **args)
 	}
 	else if (child_pid == 0)
 	{
-		command = args[0];
+		command = handle_command_path(args[0]);
 		if (command == NULL)
 		{
 			perror("command not found");

@@ -5,30 +5,39 @@
 *@args: array of string or characters that make up the command
 */
 
-void handle_command_path(char **args)
+char *handle_command_path(char *args)
 {
-	char *path, *token, *path_copy, command[Max_Arguments];
+	char *path, *token, *path_copy, command[Max_Arguments], *temp;
 
-	if (args[0][0] != '/')
+	if (args[0] != '/')
 	{
 		path = getenv("PATH");
+		if (path == NULL)
+		{
+			perror("Allocation Failed");
+		}
 		if (path != NULL)
 		{
 			path_copy = strdup(path);
+			if (path_copy == NULL)
+			{
+				perror("Allocation failed");
+				return (NULL);
+			}
 			token = strtok(path_copy, ":");
 			while (token != NULL)
 			{
-				snprintf(command, sizeof(command), "%s/%s", token, args[0]);
+				snprintf(command, sizeof(command), "%s/%s", token, args);
 					if (access(command, X_OK) == 0)
 					{
-						free(args[0]);  /*frees original value*/
-						args[0] = strdup(command);
+						temp = strdup(command);
 						free(path_copy);
-						return;
+						return (temp);
 					}
 				token = strtok(NULL, ":");
 			}
 			free(path_copy);
 		}
 	}
+	return (args);
 }
