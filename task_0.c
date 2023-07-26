@@ -5,7 +5,7 @@
  *
  * Return: 0 on success
  */
-int main(void)
+/*int main(void)
 {
 	int value = 5;
 
@@ -19,4 +19,4 @@ int main(void)
 	}
 
 	return (0);
-}
+}*/

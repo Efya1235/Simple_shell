@@ -7,6 +7,7 @@
 void handle_command_execution(char **args)
 {
 	pid_t child_pid = fork();
+	char *command;
 
 	if (child_pid == -1)
 	{
@@ -15,11 +16,17 @@ void handle_command_execution(char **args)
 	}
 	else if (child_pid == 0)
 	{
-		/*execute command in child process*/
-		execvp(args[0], args);
-		/*Execution reaches this point only if exe vp fails*/
-		perror("execvp");
+		command = args[0];
+		if (command == NULL)
+		{
+			perror(command);
+			exit(EXIT_FAILURE);
+		}
+		if (execve(command, args, environ)== -1)
+		{
+		perror(args[0]);
 		exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{

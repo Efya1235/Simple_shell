@@ -14,7 +14,8 @@ extern char **environ;
 #define BUFFER_SIZE 1024
 #define Max_Arguments 1000
 
-
+void print_tokens(char **args);
+void free_args(char **args, int arg_count);
 void swap_int(int *a, int *b);
 void bubble_sort(int *array, size_t size);
 void remove_trailing_newline(char *inputptr);
@@ -27,7 +28,7 @@ int _isdigit(int j);
 int _strcmp(char *m1, char *m2);
 char *_strcat(char *dest, char *src);
 char *_memcpy(char *dest, char *src, unsigned int n);
-void tokenize_arguments(char *inputptr, char **args);
+int tokenize_arguments(char *inputptr, char **args);
 
 /**customs functions*/
 char *_strdup(char *str);

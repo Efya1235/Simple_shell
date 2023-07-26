@@ -14,7 +14,7 @@ void handle_command_path(char **args)
 		path = getenv("PATH");
 		if (path != NULL)
 		{
-			path_copy = _strdup(path);
+			path_copy = strdup(path);
 			token = strtok(path_copy, ":");
 			while (token != NULL)
 			{
@@ -22,7 +22,7 @@ void handle_command_path(char **args)
 					if (access(command, X_OK) == 0)
 					{
 						free(args[0]);  /*frees original value*/
-						args[0] = _strdup(command);
+						args[0] = strdup(command);
 						free(path_copy);
 						return;
 					}

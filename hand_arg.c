@@ -5,7 +5,7 @@
  * @inputptr: pointer to the input string
  * @args: array of arguments
  */
-void tokenize_arguments(char *inputptr, char **args)
+int tokenize_arguments(char *inputptr, char **args)
 {
 	int argCount = 0;
 	const char delimiter[] = " ";
@@ -21,7 +21,7 @@ void tokenize_arguments(char *inputptr, char **args)
 
 		if (args[argCount] == NULL)
 		{
-			fprintf(stderr, "Memory allocation error\n");
+			perror("Memory allocation error");
 			exit(1);
 		}
 		strcpy(args[argCount], token);
@@ -29,4 +29,6 @@ void tokenize_arguments(char *inputptr, char **args)
 		token = strtok(NULL, delimiter);
 	}
 	args[argCount] = NULL;
+
+	return (argCount);
 }
