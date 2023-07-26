@@ -18,7 +18,6 @@ extern char **environ;
 void swap_int(int *a, int *b);
 void bubble_sort(int *array, size_t size);
 void remove_trailing_newline(char *inputptr);
-void tokenize_arguments(char *inputptr, char **args);
 void handle_command_path(char **args);
 void handle_command_execution(char **args);
 void handle_shell(void);
@@ -28,6 +27,7 @@ int _isdigit(int j);
 int _strcmp(char *m1, char *m2);
 char *_strcat(char *dest, char *src);
 char *_memcpy(char *dest, char *src,unsigned int n);
+void tokenize_arguments(char *inputptr, char **args);
 
 /**customs functions*/
 char *_strdup(char *str);
