@@ -32,6 +32,12 @@ void handle_shell(void)
 			}
 			break;
 		}
+
+		if (inputptr[0] == '\n' || (strspn(inputptr, "  \t\n\r") == strlen(inputptr)))
+		{
+			continue;
+		}
+
 		remove_trailing_newline(inputptr);
 		argCount = tokenize_arguments(inputptr, args);
 

@@ -9,7 +9,12 @@ void handle_command_execution(char **args)
 	pid_t child_pid = fork();
 	char *command;
 
-	if (child_pid == -1)
+	if (args[0] == NULL)
+	{
+		return;
+	}
+
+	else if  (child_pid == -1)
 	{
 		perror("fork");
 		exit(EXIT_FAILURE);
@@ -19,12 +24,11 @@ void handle_command_execution(char **args)
 		command = args[0];
 		if (command == NULL)
 		{
-			perror(command);
-			exit(EXIT_FAILURE);
+			perror("command not found");
 		}
 		if (execve(command, args, environ)== -1)
 		{
-		perror(args[0]);
+		perror(command);
 		exit(EXIT_FAILURE);
 		}
 	}
