@@ -49,6 +49,7 @@ char *_strcat(char *dest, char *src)
  */
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
+	unsigned int i;
 	char *result = (char *)malloc(n * sizeof(char));
 
 	if (result == NULL)
@@ -56,7 +57,7 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 		fprintf(stderr, "Memory allocation error\n");
 		return (NULL);
 	}
-	for (unsigned int i = 0; n > 1; i++)
+	for (i = 0; n > 1; i++)
 	{
 		result[i] = src[i];
 	}

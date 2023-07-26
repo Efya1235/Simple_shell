@@ -26,7 +26,7 @@ void handle_shell_exit(char *arg);
 int _isdigit(int j);
 int _strcmp(char *m1, char *m2);
 char *_strcat(char *dest, char *src);
-char *_memcpy(char *dest, char *src,unsigned int n);
+char *_memcpy(char *dest, char *src, unsigned int n);
 void tokenize_arguments(char *inputptr, char **args);
 
 /**customs functions*/
